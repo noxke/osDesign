@@ -1,0 +1,15 @@
+version: "1"
+services:
+  osDesign:
+    image: osDesign:latest
+    container_name: osDesign
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - 55922:22
+      - 55901:5901
+    volumes:
+      - ../../osDesign:/root/osDesign
+    tty: true
+    stdin_open: true
+    restart: unless-stopped 

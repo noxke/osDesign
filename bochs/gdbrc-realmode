@@ -1,0 +1,12 @@
+set disassembly-flavor intel
+set architecture i8086
+
+define bk
+    break *($arg0 & 0xFFFF) if (($cs << 4) + $eip) == $arg0
+end
+
+bk 0x7c00
+bk 0x90204
+
+target remote localhost:1234
+continue

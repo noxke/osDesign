@@ -1,0 +1,32 @@
+; mbr启动引导参数
+
+MBR_MAGIC equ 0xAA55
+BIOS_BOOT_SEG equ 0x07C0
+MBR_SIZE equ 0x200
+SETUP_OFFSET equ 0x200
+BOOT_SEG equ 0x9000
+BOOT_ADDR equ 0x90000
+STACK_SEG equ 0x0
+STACK_SIZE equ 0xF000
+
+; 内核加载地址
+KERNEL_SEG equ 0x1100
+KERNEL_ADDR equ 0x11000
+
+; 启动设备参数
+BOOT_DRIVE equ 0
+SETUP_SECTOR equ 1
+
+; kernel磁盘参数
+KERNEL_SECTOR equ 4
+%ifndef KERNEL_SZ
+    %error "KERNEL_SIZE is not defined"
+%endif
+KERNEL_SIZE equ (KERNEL_SZ + 511) / 512 ; kernel所占扇区大小
+KERNEL_SIZE_KB equ KERNEL_SIZE / 2
+
+; 字体颜色
+COLOR_GREEN equ 0x0002
+COLOR_RED equ 0x0004
+COLOR_BLUE equ 0x0009
+COLOR_WHITE equ 0x000F
